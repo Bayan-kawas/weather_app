@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Splash Screen',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.cyan,
       ),
       home: SplashContent(),
       debugShowCheckedModeBanner: false,
@@ -22,3 +22,8 @@ class MyApp extends StatelessWidget {
 
 
 
+Widget messageDialog(){
+  return AlertDialog(
+    title: Text("not found city name"),
+  );
+}

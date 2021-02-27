@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'weatherCurrentLocation.dart';
@@ -6,6 +8,7 @@ import 'package:geolocator/geolocator.dart';
 
 
 Position position;
+var response;
 getCurrentLocation() async{
    position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
 }
@@ -19,16 +22,30 @@ getWeather(String anotherLocation)async{
   }else{
     url='api.openweathermap.org/data/2.5/weather?q=$anotherLocation&units=metric&appid=$key';
   }
-  var response = await http.get("http://$url");
+   response = await http.get("http://$url");
   print(response.body);
   if(response.statusCode==200){
     return WeatherCurrentLocation.fromJson(jsonDecode(response.body),);
-  }else{
-    throw Exception("failed to load response");
+  }
+  else{
+    throw Exception("City Name Not Found Check Spelling");
   }
 
 }
 
+Widget messageDialog(){
+  return AlertDialog(
+    title: Text("not found city name"),
+  );
+}
+class Message extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("not found city name"),
+    );
+  }
+}
 
 
 

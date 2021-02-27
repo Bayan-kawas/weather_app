@@ -34,7 +34,7 @@ class _SplashContentState extends State<SplashContent> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image:
-                AssetImage('images/splashWeather.jpeg'),
+                AssetImage('assets/images/splashWeather.jpeg'),
               fit: BoxFit.cover,
               ),
             ),
@@ -45,12 +45,6 @@ class _SplashContentState extends State<SplashContent> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Icon(
-                    //   Icons.cloud,
-                    //   size:40,
-                    //   color: Colors.white,
-                    // ),
-                    // SizedBox(width:10),
                     Text(
                       'Weather ',
                       style: TextStyle(
@@ -62,7 +56,6 @@ class _SplashContentState extends State<SplashContent> {
                     Text(
                       'Now',
                       style: TextStyle(
-                    //   fontWeight: FontWeight.bold,
                         fontSize: 40,
                         color: Colors.amberAccent,
                       ),

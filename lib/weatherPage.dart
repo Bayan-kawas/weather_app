@@ -20,6 +20,7 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
   Future<dynamic> futureWeatherCurrentLocation;
   String anotherLocation;
+  var msgController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class _WeatherPageState extends State<WeatherPage> {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image:AssetImage('images/background.jpeg') ,
+                  image:AssetImage('assets/images/background.jpeg') ,
                   fit: BoxFit.cover),
             ),
             child: Column(
@@ -52,8 +53,10 @@ class _WeatherPageState extends State<WeatherPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: TextField(
+                      controller: msgController,
                       autofocus: false,
                       autocorrect: true,
+                      cursorColor: Colors.cyan,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
@@ -61,6 +64,7 @@ class _WeatherPageState extends State<WeatherPage> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white54,
+
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.white, //this has no effect
@@ -76,10 +80,12 @@ class _WeatherPageState extends State<WeatherPage> {
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
                           borderSide: BorderSide(color: Colors.cyan),
                         ),
+
                       ),
                       onSubmitted: (text) {
                         setState(() {
                           anotherLocation = text;
+                          msgController.clear();
                         });
                       },
                     ),
